@@ -59,7 +59,6 @@ class PopUpBarcodeViewController: UIViewController {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "會員條碼"
         label.font = .systemFont(ofSize: 20, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

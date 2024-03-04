@@ -8,10 +8,10 @@
 ![](images/receipt.png)
 
 #### This demo satisfies the following requirements.
-- When displayed, set the screen brightness to maximum.
-- Upon leaving or tap other view controller, adjust the brightness back to the user's original setting.
+- When the barcode is displayed, set the screen brightness to maximum.
+- When leaving or tapping another view controller, adjust the brightness back to the original setting..
 - When switching to another application, set the screen brightness to the original setting.
-- Upon returning to the application, set the screen brightness to maximum.
+- When returning to the app and the barcode is displayed, adjust the screen brightness to its maximum level.
 
 
 ## Run
