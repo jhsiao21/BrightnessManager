@@ -1,13 +1,13 @@
 # About
 
-#### The Brightness Manager class is designed to control screen brightness and can be used anywhere. 
+The Brightness Manager class is designed to manage screen brightness adjustments and to set the brightness during application foreground and background transitions. It can be used anywhere. 
 
-#### The PopUpBarcodeViewController is designed to display a member code or receipt code.
+The PopUpBarcodeViewController is designed to display a member code or receipt code.
 
 ![](images/member.png)
 ![](images/receipt.png)
 
-#### This demo satisfies the following requirements.
+##### This demo satisfies the following requirements.
 - When the barcode is displayed, set the screen brightness to maximum.
 - When leaving or tapping another view controller, adjust the brightness back to the original setting..
 - When switching to another application, set the screen brightness to the original setting.
