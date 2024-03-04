@@ -7,12 +7,12 @@
 
 import UIKit
 
-class BrightnessManager {
+final class BrightnessManager {
     
-    /// execute handler from background to foreground
+    /// a closure property used to store the code that needs to be executed when the application switches from background to foreground
     var willEnterForegroundHandler: (() -> Void)?
     
-    /// execute handler from foreground to background
+    /// a closure property used to store the code that needs to be executed when the application switches from foreground to background
     var willResignActiveHandler: (() -> Void)?
         
     init() {
@@ -24,14 +24,14 @@ class BrightnessManager {
     
     /// set observer to listen willEnterForeground and willResignActive
     private func addObserver() {
-        // listen to willEnterForeground
+        // listen to willEnterForeground event
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         
-        // listen to willResignActive
+        // listen to willResignActive event
         NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIApplication.willResignActiveNotification, object: nil)
     }
     
-    func setWillEnterForeground(completion: @escaping () -> Void) {
+    func setWillEnterForegroundHandler(completion: @escaping () -> Void) {
         willEnterForegroundHandler = completion
     }
     
@@ -40,7 +40,7 @@ class BrightnessManager {
         print("BarcodeShowUpManager willEnterForeground")
     }
     
-    func setWillResignActive(completion: @escaping () -> Void) {
+    func setWillResignActiveHandler(completion: @escaping () -> Void) {
         willResignActiveHandler = completion
     }
     

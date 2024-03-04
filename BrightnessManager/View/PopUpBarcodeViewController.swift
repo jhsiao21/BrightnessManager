@@ -12,7 +12,7 @@ protocol PopUpBarcodeDelegate: AnyObject {
 //    func didTapChangeCode()
 }
 
-class PopUpBarcodeViewController: UIViewController {
+final class PopUpBarcodeViewController: UIViewController {
     
     var isShowMember : Bool = true
     weak var delegate: PopUpBarcodeDelegate?
@@ -131,7 +131,7 @@ class PopUpBarcodeViewController: UIViewController {
             closeButton.heightAnchor.constraint(equalToConstant: 50),
         ])
         
-        setupBtnWhenDisplayMemberCode()
+        setupBtnWhenMemberBarcodeDisplayed()
     }
     
     @objc func didTapClose(_ btn: UIButton) {
@@ -143,9 +143,9 @@ class PopUpBarcodeViewController: UIViewController {
         isShowMember.toggle()
         
         if isShowMember {
-            setupBtnWhenDisplayMemberCode()
+            setupBtnWhenMemberBarcodeDisplayed()
         } else {
-            setupBtnWhenDisplayBarCode()
+            setupBtnWhenReceiptBarcodeDisplayed()
         }
     }
     
@@ -153,11 +153,11 @@ class PopUpBarcodeViewController: UIViewController {
         barcodeShowUpManager = BrightnessManager()
         
         //指定WillEnterForeground觸發的函式為此view controller的willEnterForeground()
-        barcodeShowUpManager?.setWillEnterForeground {
+        barcodeShowUpManager?.setWillEnterForegroundHandler { [unowned self] in
             self.willEnterForeground()
         }
         //指定WillResignActive觸發的函式為此view controller的willResignActive()
-        barcodeShowUpManager?.setWillResignActive {
+        barcodeShowUpManager?.setWillResignActiveHandler { [unowned self] in
             self.willResignActive()
         }
     }
@@ -181,7 +181,7 @@ class PopUpBarcodeViewController: UIViewController {
         barcodeShowUpManager = nil
     }
     
-    private func setupBtnWhenDisplayMemberCode() {
+    private func setupBtnWhenMemberBarcodeDisplayed() {
         canvas.backgroundColor = .white
         titleLabel.text = "會員條碼"
         titleLabel.textColor = .black
@@ -192,7 +192,7 @@ class PopUpBarcodeViewController: UIViewController {
         changeCodeButton.setTitle("顯示手機條碼載具", for: .normal)
     }
     
-    private func setupBtnWhenDisplayBarCode() {
+    private func setupBtnWhenReceiptBarcodeDisplayed() {
         canvas.backgroundColor = .systemPink
         titleLabel.text = "手機條碼載具"
         titleLabel.textColor = .white
